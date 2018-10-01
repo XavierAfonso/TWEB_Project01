@@ -24,8 +24,6 @@
     <link rel="stylesheet" href="css/sal.css">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
     
-
-  
     <link href="css/vis-network.min.css" rel="stylesheet" type="text/css" />
 
 
@@ -84,7 +82,7 @@
       data-sal-delay="300"
       data-sel-easing="ease-out-bounce"
      >
-        <div class="row">
+        <div class="row" id="searchsection">
           <div class="col-md-10 col-lg-8 mx-auto text-center">
             
             <!--<i class="far fa-paper-plane fa-2x mb-2"></i>-->
@@ -168,7 +166,7 @@
     </section>
 
     <!-- Footer -->
-    <footer class="bg-black small text-center text-white-50">
+    <footer id="myfooter" class="bg-black small text-center text-white-50">
       <div class="container">
         Copyright &copy; Your Website 2018
       </div>
@@ -187,11 +185,9 @@
 
     <script src="js/sal.js"></script>
 
-  
-
     <script>
       sal({
-      threshold: 1,
+      threshold: 0.1,
       once: false,
     });
 
