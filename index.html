@@ -22,15 +22,16 @@
     <!--<link href="css/grayscale.min.css" rel="stylesheet">-->
     <link href="css/grayscale.css" rel="stylesheet">
     <link rel="stylesheet" href="css/sal.css">
-
-
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
-
-
     
+
+  
+    <link href="css/vis-network.min.css" rel="stylesheet" type="text/css" />
+
+
   </head>
 
-  <body id="page-top">
+  <body id="page-top" onload="draw()">
 
     <!-- Navigation -->
     <nav class="navbar navbar-expand-lg navbar-light fixed-top navbar-shrink" id="mainNav">
@@ -101,23 +102,8 @@
     </section>
 
     <section id="link2">
-        <div class="container d-flex h-200 align-items-center"
-          
-        data-sal-duration="1200"
-        data-sal="slide-up"
-        data-sal-delay="300"
-        data-sel-easing="ease-out-bounce"
-       >
-          <div class="mx-auto text-center">
-  
-             <p>Lorem ipsum dolor sit amet, affert tibique honestatis cum eu, et per movet mucius nemore, in alia eros minim eam. An sit splendide referrentur, prima noster phaedrum mei cu, ut luptatum assueverit nam. Malorum offendit usu no. Id tota movet vituperatoribus pri, vel te debet perfecto, sit ne quaestio reprehendunt. Zril bonorum cum ne.
-
-              Eu simul option inimicus pri, id vis alia consul. Ius discere diceret ullamcorper ad. Sumo facete utroque ne vix, vis id mollis reprimique percipitur, no homero tractatos maluisset vim. In quot eligendi tractatos cum.
-             </p>
-
-          </div>
-        </div>
-      </section>
+        <div id="mynetwork"></div>
+    </section>
 
     <!-- Contact Section -->
     <section id="contact" class="contact-section bg-black">
@@ -201,13 +187,76 @@
 
     <script src="js/sal.js"></script>
 
+  
+
     <script>
       sal({
       threshold: 1,
       once: false,
     });
+
     </script>
 
+<script type="text/javascript" src="js/vis.js"></script>
+
+
+<script type="text/javascript"> 
+
+  var nodes = null;
+  var edges = null;
+  var network = null;
+
+  // Called when the Visualization API is loaded.
+  function draw() {
+    // create people.
+    // value corresponds with the age of the person
+    var DIR = 'img/';
+
+    nodes = [
+      {id: 1,  shape: 'circularImage', image: DIR + '1.jpg'},
+      {id: 2,  shape: 'circularImage', image: DIR + '2.jpg'},
+      {id: 3,  shape: 'circularImage', image: DIR + '3.jpg'},
+      {id: 4,  shape: 'circularImage', image: DIR + '4.jpg'},
+      {id: 5,  shape: 'circularImage', image: DIR + '5.png'}
+    ];
+
+    // create connections between people
+    // value corresponds with the amount of contact between two people
+    edges = [
+      {from: 1, to: 2},
+      {from: 1, to: 5},
+      {from: 2, to: 4},
+      {from: 3, to: 5},
+      {from: 5, to: 3},
+      {from: 5, to: 2}
+    ];
+
+    // create a network
+    var container = document.getElementById('mynetwork');
+    var data = {
+      nodes: nodes,
+      edges: edges
+    };
+    var options = {
+      nodes: {
+        borderWidth:4,
+        size:30,
+      color: {
+          border: '#222222',
+          background: '#666666'
+        },
+        font:{color:'#eeeeee'}
+      },
+      edges: {
+        color: 'lightgray'
+      }
+    };
+    network = new vis.Network(container, data, options);
+  }
+</script>
+
+
   </body>
+
 
 </html>
