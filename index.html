@@ -45,10 +45,7 @@
               <a class="nav-link js-scroll-trigger" href="#link1">Link 1</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link js-scroll-trigger" href="#link2">Link 2</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link js-scroll-trigger" href="#link3">Link3</a>
+              <a class="nav-link js-scroll-trigger" href="#link2">Link2</a>
             </li>
           </ul>
         </div>
@@ -56,7 +53,7 @@
     </nav>
 
     <!-- Header -->
-    <header class="masthead">
+    <header id = "masthead" class="masthead">
       <div class="container d-flex h-100 align-items-center">
         <div class="mx-auto text-center"
 
@@ -68,43 +65,58 @@
 
           <h1 class="mx-auto my-0 text-uppercase">Who can help ?</h1>
           <h2 class="mx-auto mt-2 mb-5">A free, responsive, one page Bootstrap theme created by Start Bootstrap.</h2>
-          <a href="#link1" class="btn btn-primary js-scroll-trigger">Get Started</a>
+          <a href="#link1" class= "btn btn-primary js-scroll-trigger">Get Started</a>
+
         </div>
       </div>
     </header>
 
-
-    <section id="link1"  class="signup-section">
-      <div class="container"
+    <!--class="container"-->
+    <section id="link1" >
+     <div 
         
       data-sal-duration="1200"
       data-sal="slide-up"
       data-sal-delay="300"
       data-sel-easing="ease-out-bounce"
      >
-        <div class="row" id="searchsection">
-          <div class="col-md-10 col-lg-8 mx-auto text-center">
-            
-            <!--<i class="far fa-paper-plane fa-2x mb-2"></i>-->
-            <i class="fas fa-search fa-4x mb-2"></i>
-            <h2 class="mb-5">Find </h2>
 
-            <form class="form-inline d-flex">
-              <input type="email" class="form-control flex-fill mr-0 mr-sm-2 mb-3 mb-sm-0" id="inputEmail" placeholder="Enter username gitub...">
-              <button type="submit" class="btn btn-primary mx-auto">Find</button>
+     <div class ="row" id="row1">
+
+       <div class="col-lg-5">
+          <form class="form-inline">
+              <input type="pseudo" class="form-control flex-fill" id="inputGithub" placeholder="Username gitub...">
+              <!---<button type="submit" class="btn btn-primary">Find</button>-->
             </form>
+       </div>
+       <div class="col-lg-5">
+          <form class="form-inline">
+              <input type="pseudo" class="form-control flex-fill" id="inputGithub" placeholder="Langage">
+            </form>
+       </div>
 
-          </div>
-        </div>
+       <div class="col-lg-2">
+          <button type="button" class="mybtn btn-primary">Search</button>
+       </div>
       </div>
+
+      <div class ="row" id="contNetowrk">
+        <div id="mynetwork"></div>
+
+        <a class="nav-link js-scroll-trigger" href="#masthead"><div class="arrow arrowUp"></div></a>
+        <a class="nav-link js-scroll-trigger" href="#link2"><div class="arrow arrowDown"></div></a>
+
+     </div>
+
+
     </section>
 
     <section id="link2">
-        <div id="mynetwork"></div>
-    </section>
 
-    <section id="link3">
+        <a class="nav-link js-scroll-trigger" href="#link1"><div class="arrow arrowUp2"></div></a>
+      
       <div class="container">
+
         <p>
             Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
         </p>
@@ -258,7 +270,6 @@
     network = new vis.Network(container, data, options);
   }
 </script>
-
 
   </body>
 

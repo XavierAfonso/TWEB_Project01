@@ -1,3 +1,4 @@
+/* eslint-disable */
 (function($) {
   "use strict"; // Start of use strict
 
@@ -8,7 +9,7 @@
       target = target.length ? target : $('[name=' + this.hash.slice(1) + ']');
       if (target.length) {
         $('html, body').animate({
-          scrollTop: (target.offset().top - 70)
+          scrollTop: (target.offset().top)
         }, 1000, "easeInOutExpo");
         return false;
       }
@@ -27,16 +28,20 @@
   });
 
   // Collapse Navbar
- /* var navbarCollapse = function() {
+  var navbarCollapse = function() {
     if ($("#mainNav").offset().top > 100) {
-      $("#mainNav").addClass("navbar-shrink");
+      //$("#mainNav").addClass("navbar-shrink");
+      //
+       $("#mainNav").addClass("test");
+      //$("#mainNav").addClass("navbar navbar-expand-lg navbar-light fixed-top navbar-shrink navbar navbar-expand-lg navbar-light fixed-top navbar-shrink");
     } else {
-      $("#mainNav").removeClass("navbar-shrink");
+     // $("#mainNav").removeClass("navbar-shrink");
+     $("#mainNav").removeClass("test");
     }
   };
   // Collapse now if page is not at top
-  navbarCollapse();
+  //navbarCollapse();
   // Collapse the navbar when page is scrolled
-  $(window).scroll(navbarCollapse);*/
+  $(window).scroll(navbarCollapse);
 
 })(jQuery); // End of use strict

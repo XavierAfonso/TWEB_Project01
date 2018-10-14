@@ -92,9 +92,6 @@
   height: 100vh;
   min-height: 35rem;
   padding: 15rem 0;
-  /*background-color: red;*/
- /* background: -webkit-gradient(linear, left top, left bottom, from(rgba(22, 22, 22, 0.1)), color-stop(75%, rgba(22, 22, 22, 0.5)), to(#161616)), url("../img/bg-masthead.jpg");
-  background: linear-gradient(to bottom, rgba(22, 22, 22, 0.1) 0%, rgba(22, 22, 22, 0.5) 75%, #161616 100%), url("../img/bg-masthead.jpg");*/
   background-color: #ced6e0;
   background-position: center;
   background-repeat: no-repeat;
@@ -107,12 +104,6 @@
   font-size: 2.5rem;
   line-height: 2.5rem;
   letter-spacing: 0.8rem;
-  /*color: red;*/
-  
-  /*background: -webkit-linear-gradient(rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0));
-  -webkit-text-fill-color: transparent;
-  -webkit-background-clip: text;*/
-
 }
 
 .masthead h2 {
@@ -179,59 +170,6 @@
 
 .about-section p {
   margin-bottom: 5rem;
-}
-
-.projects-section {
-  padding: 10rem 0;
-}
-
-.projects-section .featured-text {
-  padding: 2rem;
-}
-
-@media (min-width: 992px) {
-  .projects-section .featured-text {
-    padding: 0 0 0 2rem;
-    border-left: 0.5rem solid #64a19d;
-  }
-}
-
-.projects-section .project-text {
-  padding: 3rem;
-  font-size: 90%;
-}
-
-@media (min-width: 992px) {
-  .projects-section .project-text {
-    padding: 5rem;
-  }
-  .projects-section .project-text hr {
-    border-color: #64a19d;
-    border-width: .25rem;
-    width: 30%;
-  }
-}
-
-/*.signup-section {
-  padding: 10rem 0;
-  background: -webkit-gradient(linear, left top, left bottom, from(rgba(22, 22, 22, 0.1)), color-stop(75%, rgba(22, 22, 22, 0.5)), to(#161616)), url("../img/bg-signup.jpg");
-  background: linear-gradient(to bottom, rgba(22, 22, 22, 0.1) 0%, rgba(22, 22, 22, 0.5) 75%, #161616 100%), url("../img/bg-signup.jpg");
-  background-position: center;
-  background-repeat: no-repeat;
-  background-attachment: scroll;
-  background-size: cover;
-}*/
-
-.signup-section .form-inline input {
-  -webkit-box-shadow: 0 0.1875rem 0.1875rem 0 rgba(0, 0, 0, 0.1) !important;
-  box-shadow: 0 0.1875rem 0.1875rem 0 rgba(0, 0, 0, 0.1) !important;
-  padding: 1.25rem 2rem;
-  height: auto;
-  font-family: 'Varela Round';
-  font-size: 80%;
-  text-transform: uppercase;
-  letter-spacing: 0.15rem;
-  border: 0;
 }
 
 .contact-section {
@@ -312,21 +250,20 @@ footer {
   background-color: #dfe4ea;
   position: relative;
   width: 100%;
-  height: 95vh;
-  min-height: 35rem;
-  padding: 15rem 0;
+  height: 100%;
+  min-height: 100vh;
+  padding: 1rem 5rem;
+  padding-left: 2rem;
+
 }
 
-#link2{
-  background-color: #ced6e0;
+#contNetowrk{
   position: relative;
-  width: 100%;
-  height: 95vh;
-  min-height: 35rem;
-  padding: 15rem 0;
+  height: 85vh;
+  width: 100% ;
 }
 
-#link2 p{
+#contNetowrk p{
   text-align:justify;
 }
 
@@ -335,6 +272,8 @@ footer {
   top: 0;
   width: 100%;
   height: 100%;
+  background-color: #ecf0f1;
+  border-style: dotted;
 }
 
 #searchsection{
@@ -343,17 +282,74 @@ footer {
   bottom: 100px;
 }
 
-#link3{
-  background-color: #dfe4ea;
+#link2{
   position: relative;
   width: 100%;
-  height: 95vh;
+  height: 100vh;
   min-height: 35rem;
   padding: 15rem 0;
+  background-color: #ced6e0;
+  padding-right: 2rem;
 }
 
-#link3 p{
+#link2 p{
   text-align:justify;
   margin: auto;
+}
+
+.test{
+  visibility: hidden;
+}
+
+.mybtn{
+  position: relative;
+  top: 5px;
+  -webkit-box-shadow: 0 0.1875rem 0.1875rem 0 rgba(0, 0, 0, 0.1) !important;
+  box-shadow: 0 0.1875rem 0.1875rem 0 rgba(0, 0, 0, 0.1) !important;
+  padding: 0.25rem 1rem;
+  margin-bottom: 5px;
+  font-family: 'Varela Round';
+  font-size: 80%;
+  text-transform: uppercase;
+  letter-spacing: .15rem;
+  border: 0;
+}
+
+#row1{
+  position: relative;
+  right: 10px;
+  margin-bottom:5px;
+}
+
+.arrow {
+  position: absolute;
+  box-sizing: border-box;
+  height: 50px;
+  width: 50px;
+  border-style: solid;
+  border-color: #64a19d;
+  border-width: 0px 1px 1px 0px;
+}
+
+.arrowUp{
+  right: -70px;
+  transform: rotate(225deg);
+}
+
+.arrowDown{
+  right: -70px;
+  bottom: 10px;
+  transform: rotate(45deg);
+}
+
+.arrowUp2{
+  right: 25px;
+  top:50px;
+  transform: rotate(225deg);
+}
+
+.arrow:hover {
+  border-bottom-width: 4px;
+  border-right-width: 4px;
 }
 
