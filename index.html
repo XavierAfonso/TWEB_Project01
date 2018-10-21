@@ -85,18 +85,18 @@
 
        <div class="col-lg-5">
           <form class="form-inline">
-              <input type="pseudo" class="form-control flex-fill" id="inputGithub" placeholder="Username gitub...">
+              <input type="input" class="form-control flex-fill" id="username" placeholder="Username gitub...">
               <!---<button type="submit" class="btn btn-primary">Find</button>-->
             </form>
        </div>
        <div class="col-lg-5">
           <form class="form-inline">
-              <input type="pseudo" class="form-control flex-fill" id="inputGithub" placeholder="Langage">
+              <input type="input" class="form-control flex-fill" id="language" placeholder="Langage">
             </form>
        </div>
 
        <div class="col-lg-2">
-          <button type="button" class="mybtn btn-primary">Search</button>
+          <button id="searchButton" type="button" class="mybtn btn-primary">Search</button>
        </div>
       </div>
 
@@ -270,6 +270,9 @@
     network = new vis.Network(container, data, options);
   }
 </script>
+
+
+<script src="js/myjs.js"></script>
 
   </body>
 
