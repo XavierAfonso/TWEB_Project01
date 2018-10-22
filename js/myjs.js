@@ -8,6 +8,13 @@ let nodes = [];
 let edges = [];
 let network = null;
 
+
+function loading(){
+
+  $('#mynetwork').empty();
+  $('#mynetwork').append('<img id ="loading" src="gif/loading.gif" alt="Loading">');  
+}
+
 // Called when the Visualization API is loaded.
 function draw() {
 
@@ -135,6 +142,7 @@ function CreateNodes(username){
         });
 
         //console.log(data);
+        $('#loading').addClass('hidden')
         draw();
 
     }).catch(err => {
@@ -146,7 +154,11 @@ $(function() {
     $("#searchButton").click( function()
          {
             let username = $("#username").val();
-            CreateNodes(username);
+            if(username.length>0){
+              //$('#loading').removeClass('hidden')
+              loading();
+              CreateNodes(username);
+            }
          }
     );
 });

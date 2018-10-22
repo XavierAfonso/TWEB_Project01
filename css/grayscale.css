@@ -353,3 +353,17 @@ footer {
   border-right-width: 4px;
 }
 
+#loading{
+
+  position: absolute;
+  width: 60%;
+  height: auto;
+  margin: auto;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+
+
+.hidden { display: none; }
