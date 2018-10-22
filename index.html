@@ -29,7 +29,7 @@
 
   </head>
 
-  <body id="page-top" onload="draw()">
+  <body id="page-top">
 
     <!-- Navigation -->
     <nav class="navbar navbar-expand-lg navbar-light fixed-top navbar-shrink" id="mainNav">
@@ -215,66 +215,8 @@
 
 <script type="text/javascript" src="js/vis.js"></script>
 
-
-<script type="text/javascript"> 
-
-  var nodes = null;
-  var edges = null;
-  var network = null;
-
-  // Called when the Visualization API is loaded.
-  function draw() {
-    // create people.
-    // value corresponds with the age of the person
-    var DIR = 'img/';
-
-    nodes = [
-      {id: 1,  shape: 'circularImage', image: DIR + '1.jpg'},
-      {id: 2,  shape: 'circularImage', image: DIR + '2.jpg'},
-      {id: 3,  shape: 'circularImage', image: DIR + '3.jpg'},
-      {id: 4,  shape: 'circularImage', image: DIR + '4.jpg'},
-      {id: 5,  shape: 'circularImage', image: DIR + '5.png'}
-    ];
-
-    // create connections between people
-    // value corresponds with the amount of contact between two people
-    edges = [
-      {from: 1, to: 2},
-      {from: 1, to: 5},
-      {from: 2, to: 4},
-      {from: 3, to: 5},
-      {from: 5, to: 3},
-      {from: 5, to: 2}
-    ];
-
-    // create a network
-    var container = document.getElementById('mynetwork');
-    var data = {
-      nodes: nodes,
-      edges: edges
-    };
-    var options = {
-      nodes: {
-        borderWidth:4,
-        size:30,
-      color: {
-          border: '#222222',
-          background: '#666666'
-        },
-        font:{color:'#eeeeee'}
-      },
-      edges: {
-        color: 'lightgray'
-      }
-    };
-    network = new vis.Network(container, data, options);
-  }
-</script>
-
-
 <script src="js/myjs.js"></script>
 
-  </body>
-
+</body>
 
 </html>
