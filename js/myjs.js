@@ -2,7 +2,7 @@
 // https://medium.freecodecamp.org/environment-settings-in-javascript-apps-c5f9744282b6
 const baseUrl =  (window.location.hostname === 'localhost' || (window.location.hostname === '127.0.0.1'))
   ? 'http://localhost:3000'
-  : 'https://tweb-project1.herokuapp.com/';
+  : 'https://tweb-project1.herokuapp.com';
 
 let nodes = [];
 let edges = [];
