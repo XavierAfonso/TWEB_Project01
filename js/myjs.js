@@ -85,6 +85,7 @@ function CreateNodes(username){
     let arrayIds = [];
     nodes = [];
     edges = [];
+    edgesMemory = [];
 
     getContributors(username).then(data => {
 
@@ -137,7 +138,15 @@ function CreateNodes(username){
                 edge = {};
                 edge.from = root.id;
                 edge.to = item.id;
-                edges.push(edge);
+
+                edgeInvert = edge.to + '-' + edge.from;
+
+                if(!edgesMemory.includes(edgeInvert)){
+
+                  //Save the pair
+                  edgesMemory.push(edge.from + '-' + edge.to);
+                  edges.push(edge);
+                }
             });
         });
 
