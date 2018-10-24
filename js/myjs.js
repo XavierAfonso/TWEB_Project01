@@ -107,7 +107,8 @@ function CreateNodes(username){
                 //Create the node
                 rootClean.shape = 'circularImage';
                 rootClean.image = root.avatar_url;
-                rootClean.label = 'root';
+                rootClean.label = root.login;
+                rootClean.color = '#A0FFA0'
 
                 nodes.push(rootClean);
                 first = false;
