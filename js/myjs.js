@@ -75,19 +75,18 @@ function getRepos(username) {
       .then(res => res.json());
 }
 
-function getContributors(username) {
-    return fetch(`${baseUrl}/contributors/${username}`)
+function getContributors(username, predicate) {
+    return fetch(`${baseUrl}/contributors/${username}/${predicate}`)
       .then(res => res.json());
 }
 
-//function CreateNodes(username, language){
-function CreateNodes(username){
+function CreateNodes(username, language){
     let arrayIds = [];
     nodes = [];
     edges = [];
     edgesMemory = [];
 
-    getContributors(username).then(data => {
+    getContributors(username, language).then(data => {
         let first = true; 
 
         let nodeHelpColor = {};
@@ -175,8 +174,7 @@ $(function() {
             if (language.length>0) {
               //$('#loading').removeClass('hidden')
               loading();
-              //CreateNodes(username, language);
-              CreateNodes(username);
+              CreateNodes(username, language);
             } 
             // form validation feedback in html
           }
