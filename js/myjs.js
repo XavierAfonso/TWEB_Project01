@@ -80,24 +80,24 @@ function getContributors(username) {
       .then(res => res.json());
 }
 
+//function CreateNodes(username, language){
 function CreateNodes(username){
-
     let arrayIds = [];
     nodes = [];
     edges = [];
     edgesMemory = [];
 
     getContributors(username).then(data => {
-
         let first = true; 
 
-        data.forEach(function(item){
+        let nodeHelpColor = {};
+        nodeHelpColor.border = '#FFD700';
 
+        data.forEach(function(item){
             let root = item.root;
 
             //The root
             if(first){
-
                 let rootClean = {};
                 rootClean.id = root.id;
 
@@ -107,17 +107,15 @@ function CreateNodes(username){
                 //Create the node
                 rootClean.shape = 'circularImage';
                 rootClean.image = root.avatar_url;
-                rootClean.label = "root";
+                rootClean.label = 'root';
 
                 nodes.push(rootClean);
                 first = false;
             }
 
-            let contributors = item.contributors;
-
             //Contributors
+            let contributors = item.contributors;
             contributors.forEach(function(item){ 
-                
                 let current = {};
                 current.id = item.id;
 
@@ -131,25 +129,33 @@ function CreateNodes(username){
                     current.shape = 'circularImage';
                     current.image = item.avatar_url;
                     current.label = item.login;
+                    
+                    if (item.hasOwnProperty('predicate') && item.predicate == true) {
+                      // node is a helper
+                      current.color = nodeHelpColor;
+                    }
                     nodes.push(current);
                 }
 
                 //Create the edge
                 edge = {};
+               
+                let edgeColor = {};
+                edgeColor.inherit=false;
+                edge.color= edgeColor;
+                
                 edge.from = root.id;
                 edge.to = item.id;
 
                 edgeInvert = edge.to + '-' + edge.from;
 
                 if(!edgesMemory.includes(edgeInvert)){
-
                   //Save the pair
                   edgesMemory.push(edge.from + '-' + edge.to);
                   edges.push(edge);
                 }
             });
         });
-
         //console.log(data);
         $('#loading').addClass('hidden')
         draw();
@@ -162,12 +168,17 @@ function CreateNodes(username){
 $(function() {
     $("#searchButton").click( function()
          {
-            let username = $("#username").val();
-            if(username.length>0){
+          let username = $("#username").val();
+          let language = $("#language").val();
+          if(username.length>0){
+            if (language.length>0) {
               //$('#loading').removeClass('hidden')
               loading();
+              //CreateNodes(username, language);
               CreateNodes(username);
-            }
+            } 
+            // form validation feedback in html
+          }
          }
     );
 });

@@ -81,24 +81,20 @@
       data-sel-easing="ease-out-bounce"
      >
 
-     <div class ="row" id="row1">
-
-       <div class="col-lg-5">
-          <form class="form-inline">
-              <input type="input" class="form-control flex-fill" id="username" placeholder="Username gitub...">
-              <!---<button type="submit" class="btn btn-primary">Find</button>-->
-            </form>
-       </div>
-       <div class="col-lg-5">
-          <form class="form-inline">
-              <input type="input" class="form-control flex-fill" id="language" placeholder="Langage">
-            </form>
-       </div>
-
-       <div class="col-lg-2">
-          <button id="searchButton" type="button" class="mybtn btn-primary">Search</button>
-       </div>
+    <div class ="row" id="row1">
+      <div class="col-lg-5">
+        <form class="form-inline" onsubmit="return false">
+          <input type="input" class="form-control flex-fill" id="username" placeholder="Github username" required>
       </div>
+      <div class="col-lg-5">
+          <input type="input" class="form-control flex-fill" id="language" placeholder="Langage" required>
+      </div>
+      <div class="col-lg-2">
+          <button id="searchButton" type="submit" class="mybtn btn-primary">Search</button>
+          <!---<button type="submit" class="btn btn-primary">Find</button>-->
+      </div>
+        </form>
+    </div>
 
       <div class ="row" id="contNetowrk">
         <div id="mynetwork">
