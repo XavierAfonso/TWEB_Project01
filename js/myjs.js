@@ -98,7 +98,38 @@ function getRepos(username) {
 
 function getContributors(username, predicate) {
     return fetch(`${baseUrl}/contributors/${username}/${predicate}`)
-      .then(res => res.json());
+      .then(res => {
+        if (res.ok) {
+          return res.json();
+        }
+        throw new Error(res.status);
+      });
+
+}
+
+function showErrorMessage(message) {
+  console.log("MESSAGE : " + message)
+  let errorMessage;
+  switch(message) {
+    case 'NetworkError when attempting to fetch resource.' :
+      errorMessage = 'Server is down :('
+      break;
+    case '404' : 
+      let user = $("#username").val();
+      errorMessage = 'Github user not found : ' + user;
+      break;
+    case '500' : 
+      errorMessage = "Server error...";
+      break;
+    default :
+      errorMessage = 'Something went wrong sorry...'
+  }
+
+  $('#mynetwork').empty(); // remove loading image
+  var x = document.getElementById("snackbar");
+  x.textContent = errorMessage;
+  x.className = "show";
+  setTimeout(function(){ x.className = x.className.replace("show", ""); }, 3000);
 }
 
 function CreateNodes(username, language){
@@ -185,9 +216,9 @@ function CreateNodes(username, language){
         //console.log(data);
         $('#loading').addClass('hidden')
         draw();
-
     }).catch(err => {
-        console.error('Cannot fetch data', err)
+      console.error(err.message);
+      showErrorMessage(err.message);
     })
 }
 
