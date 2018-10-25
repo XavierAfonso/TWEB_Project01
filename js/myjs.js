@@ -49,6 +49,7 @@ function draw() {
       nodes: nodes,
       edges: edges
     };
+
     var options = {
       nodes: {
         borderWidth:4,
@@ -61,16 +62,11 @@ function draw() {
       },
       edges: {
         color: 'lightgray'
-      }
+      },
     };
-    network = new vis.Network(container, data, options);
 
-    var options = {
-			interaction:{hover:true},
-			manipulation: {
-				enabled: true
-			}
-		};
+    
+    network = new vis.Network(container, data, options);
 
     network.on("doubleClick", function (params) {
       params.event = "[original event]";
@@ -81,6 +77,7 @@ function draw() {
         window.open(currentNodes.html_url);
         console.log(currentNodes);
       }
+
   });
 
   }
