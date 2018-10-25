@@ -9,6 +9,7 @@ let edges = [];
 let network = null;
 
 
+
 function loading(){
 
   $('#mynetwork').empty();
@@ -43,6 +44,7 @@ function draw() {
 
     // create a network
     var container = document.getElementById('mynetwork');
+
     var data = {
       nodes: nodes,
       edges: edges
@@ -62,6 +64,25 @@ function draw() {
       }
     };
     network = new vis.Network(container, data, options);
+
+    var options = {
+			interaction:{hover:true},
+			manipulation: {
+				enabled: true
+			}
+		};
+
+    network.on("doubleClick", function (params) {
+      params.event = "[original event]";
+      let tmp = params;
+      let currentNodes = nodes.find(x => x.id === tmp.nodes[0]);
+
+      if(currentNodes.html_url){
+        window.open(currentNodes.html_url);
+        console.log(currentNodes);
+      }
+  });
+
   }
 
 
@@ -107,6 +128,7 @@ function CreateNodes(username, language){
                 rootClean.shape = 'circularImage';
                 rootClean.image = root.avatar_url;
                 rootClean.label = root.login;
+                rootClean.html_url =  root.html_url;
                 rootClean.color = '#A0FFA0'
 
                 nodes.push(rootClean);
@@ -129,6 +151,7 @@ function CreateNodes(username, language){
                     current.shape = 'circularImage';
                     current.image = item.avatar_url;
                     current.label = item.login;
+                    current.html_url = item.html_url;
                     
                     if (item.hasOwnProperty('predicate') && item.predicate == true) {
                       // node is a helper
