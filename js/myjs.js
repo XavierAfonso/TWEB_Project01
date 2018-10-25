@@ -147,6 +147,8 @@ function CreateNodes(username, language){
                 edge.from = root.id;
                 edge.to = item.id;
 
+                if(edge.from!=edge.to){
+
                 edgeInvert = edge.to + '-' + edge.from;
 
                 if(!edgesMemory.includes(edgeInvert)){
@@ -154,6 +156,7 @@ function CreateNodes(username, language){
                   edgesMemory.push(edge.from + '-' + edge.to);
                   edges.push(edge);
                 }
+              }
             });
         });
         //console.log(data);
