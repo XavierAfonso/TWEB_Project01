@@ -87,9 +87,12 @@ function getContributors(username, predicate) {
 }
 
 function showErrorMessage(message) {
-  console.log(message)
+  console.log("MESSAGE : " + message)
   let errorMessage;
   switch(message) {
+    case 'NetworkError when attempting to fetch resource.' :
+      errorMessage = 'Server is down :('
+      break;
     case '404' : 
       let user = $("#username").val();
       errorMessage = 'Github user not found : ' + user;
@@ -191,6 +194,7 @@ function CreateNodes(username, language){
         $('#loading').addClass('hidden')
         draw();
     }).catch(err => {
+      console.error(err.message);
       showErrorMessage(err.message);
     })
 }
