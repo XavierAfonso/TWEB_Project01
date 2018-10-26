@@ -273,7 +273,7 @@ footer {
   width: 100%;
   height: 100%;
   background-color: #ecf0f1;
-  border-style: dotted;
+  border: 3px dashed #ccc;  
 }
 
 #searchsection{
@@ -356,14 +356,14 @@ footer {
 #loading{
 
   position: absolute;
-  width: 60%;
+  /*width: 60%;*/
   height: auto;
   margin: auto;
   top: 0;
   left: 0;
   right: 0;
   bottom: 0;
-  border-style: dotted;
+  /*border: 3px dashed #ccc;  */
 }
 
 

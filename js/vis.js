@@ -1,3 +1,4 @@
+/* eslint-disable */
 /**
  * vis.js
  * https://github.com/almende/vis
