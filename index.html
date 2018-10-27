@@ -84,12 +84,18 @@
 
     <div id="snackbar">ERROR</div> <!-- error toast-->
     <div class ="row" id="row1">
-      <div class="col-lg-5">
+      <div class="col-lg-4">
         <form class="form-inline" onsubmit="return false">
           <input type="input" class="form-control flex-fill" id="username" placeholder="Github username" required>
       </div>
-      <div class="col-lg-5">
-          <input type="input" class="form-control flex-fill" id="language" placeholder="Langage" required>
+      <select class="btn-sm dropdown-toggle" id="search-field">
+        <option>language</option>
+        <option>company</option>
+        <option>location</option>
+        <option>bio</option>
+      </select>
+      <div class="col-lg-4">
+          <input type="input" class="form-control flex-fill" id="search-value" placeholder="Search value (C++, London, Microsoft, ...)" required>
       </div>
       <div class="col-lg-2">
           <button id="searchButton" type="submit" class="mybtn btn-primary">Search</button>

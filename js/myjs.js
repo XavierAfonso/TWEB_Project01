@@ -53,6 +53,7 @@ function draw() {
         background: '#666666',
       },
       font: { color: 'black' },
+      title : 'cannot help',
     },
     edges: {
       color: 'lightgray',
@@ -84,7 +85,7 @@ function draw() {
       .then(res => res.json());
 } */
 
-function createGraph(data) {
+function createGraph(data, field, val) {
   const arrayIds = [];
   nodes = [];
   edges = [];
@@ -109,6 +110,7 @@ function createGraph(data) {
         rootClean.label = root.login;
         rootClean.html_url = root.html_url;
         rootClean.color = '#A0FFA0';
+        rootClean.title = 'you';
 
         nodes.push(rootClean);
         first = false;
@@ -130,9 +132,12 @@ function createGraph(data) {
           current.label = contributor.login;
           current.html_url = contributor.html_url;
 
-          if (Object.prototype.hasOwnProperty.call(contributor, 'predicate') && contributor.predicate === true) {
+          if (Object.prototype.hasOwnProperty.call(contributor, 'predicate') && contributor.predicate[0] === true) {
             // node is a helper
             current.color = nodeHelpColor;
+            console.log(contributor.predicate[0]);
+            console.log(contributor.predicate[1]);
+            current.title = getHoverString(field, contributor.predicate[1])
           }
           nodes.push(current);
         }
@@ -153,11 +158,8 @@ function createGraph(data) {
             edges.push(edge);
           }
         }
-
         nodesPublic = nodes;
         edgesPublic = edges;
-
-
       });
     });
     return true;
@@ -166,8 +168,8 @@ function createGraph(data) {
   }
 }
 
-function getContributors(username, predicate) {
-  return fetch(`${baseUrl}/contributors/${username}/${predicate}`)
+function getContributors(username, field, value) {
+  return fetch(`${baseUrl}/contributors/${username}/${field}/${value}`)
     .then((res) => {
       if (res.ok) {
         return res.json();
@@ -177,12 +179,18 @@ function getContributors(username, predicate) {
 }
 
 function showErrorMessage(message) {
-  console.log(`MESSAGE :  ${message}`);
+  console.log(`Error message :  ${message}`);
 
   let errorMessage;
   switch (message) {
     case 'NetworkError when attempting to fetch resource.':
       errorMessage = 'Server is down :(';
+      break;
+    case 'graph-error':
+      errorMessage = 'Error while generating graph :('
+      break;
+    case '403':
+      errorMessage = 'Too many requests, try again in 60 min...';
       break;
     case '404':
       // eslint-disable-next-line
@@ -195,7 +203,6 @@ function showErrorMessage(message) {
     default:
       errorMessage = 'Something went wrong sorry...';
   }
-
   $('#mynetwork').empty(); // remove loading image
   const x = document.getElementById('snackbar');
   x.textContent = errorMessage;
@@ -204,27 +211,46 @@ function showErrorMessage(message) {
   setTimeout(function(){ x.className = x.className.replace('show', ''); }, 3000);
 }
 
-function initateGraph(username, language) {
-  getContributors(username, language).then((data) => {
-      if(createGraph(data)){
+function initiateGraph(username, field, value) {
+  getContributors(username, field, value).then((data) => {
+      if(createGraph(data, field, value)){
         $('#loading').addClass('hidden');
         draw();
-      }  
+      } else {
+        showErrorMessage('graph-error');
+      }
   }).catch((err) => {
     console.error(err.message);
     showErrorMessage(err.message);
   });
 }
 
+// Get string to add to value when user hovers the node
+function getHoverString(field, value) {
+  let hoverString = '';
+  switch (field) {
+    case 'language' :
+      hoverString = value + ' bytes written';
+      break;
+    case 'location' :
+      hoverString = 'From ' + value;
+      break;
+    default:
+      hoverString = value;
+  }
+  return hoverString;
+}
+
 try{
 $(() => {
   $('#searchButton').click(() => {
     const username = $('#username').val();
-    const language = $('#language').val();
+    const field = $('#search-field').val();
+    const value = $('#search-value').val();
     if (username.length > 0) {
-      if (language.length > 0) {
+      if (value.length > 0) {
         loading();
-        initateGraph(username, language);
+        initiateGraph(username, field, value);
       }
     }
   });
