@@ -1,4 +1,5 @@
 # Github analytics - TWEB project 1 HEIG-VD
+Xavier Vaz Afonso & Joël Kaufmann
 ## *JS Client repository*
 Backend server repository can be found [here](https://github.com/XavierAfonso/TWEB_Project01_Server)
 
@@ -18,7 +19,7 @@ Our approach consists in finding someone in our Github *network* that could help
 
 ## Demo
 ##### Online demo
-The project has been deployed here. Have fun :)
+The project has been deployed [here](https://xavierafonso.github.io/TWEB_Project01/). Have fun :)
 
 ##### Screenshots
 ![Home](./Screenshots/Capture1.PNG)
@@ -32,21 +33,24 @@ Please note that this is only the client side, You will need a running backend s
 - [npm](https://www.npmjs.com/get-npm)
 
 ##### Commands
-1. Install project dependencies
 
+1. Clone this repo
+```sh
+$ git clone https://github.com/XavierAfonso/TWEB_Project01.git
+```
+
+2. Install project dependencies
 ```sh
 $ npm install
 ```
 
-2. Run the app
-
-Run the following command to start a development server on `localhost:3000`.
+3. Run the app
+Run the following command to start a development server on `localhost:8080`.
 ```sh
 $ live-server
 ```
 
-3. Run tests
-
+4. Run tests
 ```sh
 $ npm test
 ```
@@ -56,6 +60,6 @@ This project uses :
 - Theme adapted from [Bootstrap Grayscale template](https://startbootstrap.com/template-overviews/grayscale/)
 - Scrolling management from [Sal.js](https://mciastek.github.io/sal/)
 - Amazing network from [vis.js](http://visjs.org/)
-- inspired from [Github Analytics light](https://github.com/heig-vd-tweb/github-analytics-light)
+- inspired from [Github Analytics light](https://github.com/heig-vd-tweb/github-analytics-light) by [Paul Nta](https://github.com/paulnta), [edri](https://github.com/edri)
 
 Published under [MIT](https://github.com/XavierAfonso/TWEB_Project01/blob/master/LICENSE) license.
