@@ -82,25 +82,28 @@
      >
 
     <div id="snackbar">ERROR</div> <!-- error toast-->
-    <div class ="row" id="row1">
-      <div class="col-lg-4">
-        <form class="form-inline" onsubmit="return false">
+    <form  onsubmit="return false"></form>
+      <div class ="row" id="row1">
+        
+        <div class="col-lg-4">
           <input type="input" class="form-control flex-fill" id="username" placeholder="Github username" required>
+        </div>
+        <div class="col-lg-3">
+        <select class="btn-sm dropdown-toggle form-control flex-fill" id="search-field">
+          <option>language</option>
+         <option>company</option>
+          <option>location</option>
+          <option>bio</option>
+        </select>
       </div>
-      <select class="btn-sm dropdown-toggle" id="search-field">
-        <option>language</option>
-        <option>company</option>
-        <option>location</option>
-        <option>bio</option>
-      </select>
-      <div class="col-lg-4">
+      <div class="col-lg-3">
           <input type="input" class="form-control flex-fill" id="search-value" placeholder="Search value (C++, London, Microsoft, ...)" required>
       </div>
       <div class="col-lg-2">
           <button id="searchButton" type="submit" class="mybtn btn-primary">Search</button>
           <!---<button type="submit" class="btn btn-primary">Find</button>-->
       </div>
-        </form>
+    </form>
     </div>
 
       <div class ="row" id="contNetowrk">
@@ -131,7 +134,7 @@
           <br>
         </p>
         <p>
-            <h5>HEIG-VD TWEB course project by Xavier Vas Afonso and Joël Kaufmann</h5>
+            <h5>HEIG-VD TWEB course project by Xavier Vaz Afonso and Joël Kaufmann</h5>
             using Bootstrap template and vis.js
           </p>
       </div>
