@@ -2,6 +2,7 @@
 // https://medium.freecodecamp.org/environment-settings-in-javascript-apps-c5f9744282b6
 let baseUrl;
 
+// The try and catch are usefull for the tests
 try{
   baseUrl = (window.location.hostname === 'localhost' || (window.location.hostname === '127.0.0.1'))
   ? 'http://localhost:3000'
@@ -15,20 +16,23 @@ console.log("Window not loaded");
 
 let nodes = [];
 let edges = [];
+let network = null;
 
+// must be var to be accessible for the test
 var nodesPublic = [];
 var edgesPublic = [];
 
-let network = null;
-
+// Get the nodes
 function getNodes() {
   return nodesPublic;
 }
 
+// Get the edges
 function getedges() {
   return edgesPublic;
 }
 
+// Show a laoding gif
 function loading() {
   $('#mynetwork').empty();
   $('#mynetwork').append('<img id ="loading" src="gif/loading.gif" alt="Loading">');
@@ -64,27 +68,36 @@ function draw() {
   network = new vis.Network(container, data, options);
 
   network.on('doubleClick', (params) => {
-    // params.event = "[original event]";
     const tmp = params;
     const currentNodes = nodes.find(x => x.id === tmp.nodes[0]);
 
+    // open the github url of the selected node
     if (currentNodes.html_url) {
       window.open(currentNodes.html_url);
-      // console.log(currentNodes);
     }
+
   });
 }
 
-/* function getUser(username) {
+// Fetch the content of a user
+ function getUser(username) {
     return fetch(`${baseUrl}/users/${username}`)
       .then(res => res.json());
-} */
+} 
 
-/* function getRepos(username) {
+// Fetch the repos of a user
+ function getRepos(username) {
     return fetch(`${baseUrl}/repos/${username}`)
       .then(res => res.json());
-} */
+} 
 
+/**
+  * @desc create the graph
+  * @param data - the data send by the server
+  * @param field - the field choose by the user
+  * @param val - the value enter by the user
+  * @return bool - true or false
+*/
 function createGraph(data, field, val) {
   const arrayIds = [];
   nodes = [];
@@ -168,6 +181,12 @@ function createGraph(data, field, val) {
   }
 }
 
+/**
+  * @desc Get the contributors
+  * @param data - the data send by the server
+  * @param field - the field choose by the user
+  * @param value - the value enter by the user
+*/
 function getContributors(username, field, value) {
   return fetch(`${baseUrl}/contributors/${username}/${field}/${value}`)
     .then((res) => {
@@ -178,6 +197,10 @@ function getContributors(username, field, value) {
     });
 }
 
+/**
+  * @desc Show a error message
+  * @param message -the error message
+*/
 function showErrorMessage(message) {
   console.log(`Error message :  ${message}`);
 
@@ -211,6 +234,12 @@ function showErrorMessage(message) {
   setTimeout(function(){ x.className = x.className.replace('show', ''); }, 3000);
 }
 
+/**
+  * @desc Initiate the graph
+  * @param data - the data send by the server
+  * @param field - the field choose by the user
+  * @param value - the value enter by the user
+*/
 function initiateGraph(username, field, value) {
   getContributors(username, field, value).then((data) => {
       if(createGraph(data, field, value)){
@@ -225,7 +254,11 @@ function initiateGraph(username, field, value) {
   });
 }
 
-// Get string to add to value when user hovers the node
+/**
+  * @desc Get string to add to value when user hovers the node
+  * @param field - the field choose by the user
+  * @param value - the value enter by the user
+*/
 function getHoverString(field, value) {
   let hoverString = '';
   switch (field) {
@@ -241,8 +274,11 @@ function getHoverString(field, value) {
   return hoverString;
 }
 
+// The try and catch are usefull for the tests
 try{
 $(() => {
+
+  // When the user click the button
   $('#searchButton').click(() => {
     const username = $('#username').val();
     const field = $('#search-field').val();

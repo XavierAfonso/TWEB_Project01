@@ -1,4 +1,3 @@
-
 const { expect } = require('chai');
 const Utils = require('../js/myjs');
 
@@ -15,7 +14,6 @@ describe('Client', () => {
     // Not contributors attribute
     const json3 = JSON.parse('[{"root":{"id":1,"login":"example","avatar_url":"link1","html_url":"link2","predicate":false}}]');
     const test3 = Utils.createGraph(json3);
-
 
     // Create a invalide object ( without root)
     const array = [];
@@ -97,5 +95,4 @@ describe('Client', () => {
     // eslint-disable-next-line
     expect(numberOfEdges).to.equal(29);
   });
-
 });
