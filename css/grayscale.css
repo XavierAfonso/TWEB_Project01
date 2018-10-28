@@ -92,7 +92,7 @@
   height: 100vh;
   min-height: 35rem;
   padding: 15rem 0;
-  background-color: #ced6e0;
+  background-color: #EEEEEE;
   background-position: center;
   background-repeat: no-repeat;
   background-attachment: scroll;
@@ -247,7 +247,7 @@ footer {
 }
 
 #graph{
-  background-color: #dfe4ea;
+  background-color: #E0E0E0;
   position: relative;
   width: 100%;
   height: 100%;
@@ -272,7 +272,7 @@ footer {
   top: 0;
   width: 100%;
   height: 100%;
-  background-color: #f1f2f6;
+  background-color: #EEEEEE;
   border: 3px dashed #ccc;  
 }
 
@@ -287,7 +287,7 @@ footer {
   width: 100%;
   height: 100vh;
   min-height: 35rem;
-  background-color: #ced6e0;
+  background-color: #eeeeee;
   padding-right: 6rem;
   padding-left: 2rem;
 }
@@ -376,7 +376,7 @@ footer {
 
 #cardInfo{
 
-background-color: #f1f2f6;
+background-color: #E0E0E0;
 border: 3px dashed #ccc; 
 border-radius: 25px;
 min-height: 300px;
