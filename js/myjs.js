@@ -1,26 +1,24 @@
+// must be var to be accessible for the test
+// eslint-disable-next-line
+var nodesPublic = [];
+// eslint-disable-next-line
+var edgesPublic = [];
 
 // https://medium.freecodecamp.org/environment-settings-in-javascript-apps-c5f9744282b6
 let baseUrl;
 
 // The try and catch are usefull for the tests
-try{
+try {
   baseUrl = (window.location.hostname === 'localhost' || (window.location.hostname === '127.0.0.1'))
-  ? 'http://localhost:3000'
-  : 'https://tweb-project1.herokuapp.com';
-   
-}
-// eslint-disable-next-line
-catch(err) {
-console.log("Window not loaded");
+    ? 'http://localhost:3000'
+    : 'https://tweb-project1.herokuapp.com';
+} catch (err) {
+  console.log('Window not loaded');
 }
 
 let nodes = [];
 let edges = [];
 let network = null;
-
-// must be var to be accessible for the test
-var nodesPublic = [];
-var edgesPublic = [];
 
 // Get the nodes
 function getNodes() {
@@ -37,6 +35,27 @@ function loading() {
   $('#mynetwork').empty();
   $('#mynetwork').append('<img id ="loading" src="gif/loading.gif" alt="Loading">');
 }
+
+/**
+  * @desc Get string to add to value when user hovers the node
+  * @param field - the field choose by the user
+  * @param value - the value enter by the user
+*/
+function getHoverString(field, value) {
+  let hoverString = '';
+  switch (field) {
+    case 'language':
+      hoverString = `${value}  bytes written`;
+      break;
+    case 'location':
+      hoverString = `From  ${value}`;
+      break;
+    default:
+      hoverString = value;
+  }
+  return hoverString;
+}
+
 
 // Called when the Visualization API is loaded.
 function draw() {
@@ -57,7 +76,7 @@ function draw() {
         background: '#666666',
       },
       font: { color: 'black' },
-      title : 'cannot help',
+      title: 'cannot help',
     },
     edges: {
       color: 'lightgray',
@@ -75,30 +94,27 @@ function draw() {
     if (currentNodes.html_url) {
       window.open(currentNodes.html_url);
     }
-
   });
 }
 
 // Fetch the content of a user
- function getUser(username) {
-    return fetch(`${baseUrl}/users/${username}`)
-      .then(res => res.json());
-} 
+function getUser(username) {
+  return fetch(`${baseUrl}/users/${username}`)
+    .then(res => res.json());
+}
 
 // Fetch the repos of a user
- function getRepos(username) {
-    return fetch(`${baseUrl}/repos/${username}`)
-      .then(res => res.json());
-} 
-
+function getRepos(username) {
+  return fetch(`${baseUrl}/repos/${username}`)
+    .then(res => res.json());
+}
 /**
   * @desc create the graph
   * @param data - the data send by the server
   * @param field - the field choose by the user
-  * @param val - the value enter by the user
   * @return bool - true or false
 */
-function createGraph(data, field, val) {
+function createGraph(data, field) {
   const arrayIds = [];
   nodes = [];
   edges = [];
@@ -150,7 +166,7 @@ function createGraph(data, field, val) {
             current.color = nodeHelpColor;
             console.log(contributor.predicate[0]);
             console.log(contributor.predicate[1]);
-            current.title = getHoverString(field, contributor.predicate[1])
+            current.title = getHoverString(field, contributor.predicate[1]);
           }
           nodes.push(current);
         }
@@ -242,65 +258,46 @@ function showErrorMessage(message) {
 */
 function initiateGraph(username, field, value) {
   getContributors(username, field, value).then((data) => {
-      if(createGraph(data, field, value)){
-        $('#loading').addClass('hidden');
-        draw();
-      } else {
-        showErrorMessage('graph-error');
-      }
+    if (createGraph(data, field, value)) {
+      $('#loading').addClass('hidden');
+      draw();
+    } else {
+      showErrorMessage('graph-error');
+    }
   }).catch((err) => {
     console.error(err.message);
     showErrorMessage(err.message);
   });
 }
 
-/**
-  * @desc Get string to add to value when user hovers the node
-  * @param field - the field choose by the user
-  * @param value - the value enter by the user
-*/
-function getHoverString(field, value) {
-  let hoverString = '';
-  switch (field) {
-    case 'language' :
-      hoverString = value + ' bytes written';
-      break;
-    case 'location' :
-      hoverString = 'From ' + value;
-      break;
-    default:
-      hoverString = value;
-  }
-  return hoverString;
-}
-
 // The try and catch are usefull for the tests
-try{
-$(() => {
-
+try {
+  $(() => {
   // When the user click the button
-  $('#searchButton').click(() => {
-    const username = $('#username').val();
-    const field = $('#search-field').val();
-    const value = $('#search-value').val();
-    if (username.length > 0) {
-      if (value.length > 0) {
-        loading();
-        initiateGraph(username, field, value);
+    $('#searchButton').click(() => {
+      const username = $('#username').val();
+      const field = $('#search-field').val();
+      const value = $('#search-value').val();
+      if (username.length > 0) {
+        if (value.length > 0) {
+          loading();
+          initiateGraph(username, field, value);
+        }
       }
-    }
+    });
   });
-});
-}catch{
-  console.log("Jquery not loaded");
+} catch (err) {
+  console.log('Jquery not loaded');
 }
-
-try{
+try {
   module.exports = {
     getNodes,
     getedges,
     createGraph,
+    getRepos,
+    getUser,
+
   };
-}catch{
-  console.log("Module not loaded")
+} catch (err) {
+  console.log('Module not loaded');
 }
