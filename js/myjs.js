@@ -195,7 +195,7 @@ function showErrorMessage(message) {
     case '404':
       // eslint-disable-next-line
       const user = $('#username').val();
-      errorMessage = `Github user not found : ${user}`;
+      errorMessage = `Github user or data not found : ${user}`;
       break;
     case '500':
       errorMessage = 'Server error...';
