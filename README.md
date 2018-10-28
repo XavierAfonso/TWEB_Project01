@@ -22,8 +22,8 @@ Our approach consists in finding someone in our Github *network* that could help
 The project has been deployed [here](https://xavierafonso.github.io/TWEB_Project01/). Have fun :)
 
 ##### Screenshots
-![Home](./Screenshots/Capture1.PNG)
-![Graph](./Screenshots/Capture2.PNG)
+![Home](./screenshots/Capture1.PNG)
+![Graph](./screenshots/Capture2.PNG)
 
 ## Running the app
 Please note that this is only the client side, You will need a running backend server ([see backend repo](https://github.com/XavierAfonso/TWEB_Project01_Server)).
